@@ -5,21 +5,21 @@ import shutil
 
 def listImages(path, folder):
     imagemPath = list(paths.list_images(path))
-    numero = 1
+    filename = 1
     if not os.path.exists(folder):
         os.makedirs(folder)
 
     for image in imagemPath:
-        image.replace(image, folder+"/"+str(numero)+".png")
-        shutil.copy(image, image.replace(image, folder+"/"+str(numero)+".png"))
+        image.replace(image, folder+"/"+str(filename)+".png")
+        shutil.copy(image, image.replace(image, folder+"/"+str(filename)+".png"))
 
-        grayscaleImage = cv2.imread(folder+"/" + str(numero) + ".png", cv2.IMREAD_GRAYSCALE)
+        grayscaleImage = cv2.imread(folder+"/" + str(filename) + ".png", cv2.IMREAD_GRAYSCALE)
         resized_image = cv2.resize(grayscaleImage, (100, 100))
-        cv2.imwrite(folder+"/" + str(numero) + ".png", resized_image)
+        cv2.imwrite(folder+"/" + str(filename) + ".png", resized_image)
 
-        print(image.replace(image, folder+"/"+str(numero)+".png"))
+        print(image.replace(image, folder+"/"+str(filename)+".png"))
 
-        numero += 1
+        filename += 1
 
 def create_pos_n_neg(negativeFolder, positiveFolder):
     for file_type in [negativeFolder]:
@@ -33,25 +33,14 @@ def create_pos_n_neg(negativeFolder, positiveFolder):
                 with open('bg.txt', 'a') as f:
                     f.write(line)
 
-listImages('images/cats','cat')
-listImages('images/dogs','dog')
-create_pos_n_neg('dog','cat')
+catsPathReference = 'images/cats'
+catsPath = 'cat'
 
-#import cv2
+dogsPathReference = 'images/dogs'
+dogsPath = 'dog'
 
-#algorithm = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml')
+listImages(catsPathReference,catsPath)
 
-#colouredImage = cv2.imread('photos/2.jpg')
+listImages(dogsPathReference,dogsPath)
 
-
-#grayscaleImage = cv2.cvtColor(colouredImage, cv2.COLOR_BGR2GRAY)
-
-#faces = algorithm.detectMultiScale(grayscaleImage)
-
-#print(faces)
-
-#for(x, y, l, a) in faces:
-#    cv2.rectangle(colouredImage, (x, y), (x + l, y + a), (0, 255, 0), 2)
-
-#cv2.imshow("Faces", colouredImage)
-#cv2.waitKey()
+create_pos_n_neg(dogsPath,catsPath)
