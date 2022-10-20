@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/ComputerVision/images
+/ComputerVision/dog
+/ComputerVision/cat
+/ComputerVision/haarcascades
