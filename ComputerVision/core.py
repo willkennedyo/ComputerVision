@@ -3,9 +3,9 @@ import cv2
 from PIL import ImageGrab
 
 class Object:
-    def __init__(self, path):
+    def __init__(self, path, scale = 1):
         img = cv2.imread(path, 0)
-        self.img = img
+        self.img = resize(img,scale)
         if(img.shape != None):
             self.width = img.shape[1]
             self.height = img.shape[0]
@@ -30,3 +30,13 @@ def grabScreen(bbox=None):
     # Pillow uses RGB and OpenCV uses BGR, so it is necessary to convert the colors pattern
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     return img
+
+def resize(img, scale = 1):
+    scale_percent = scale # percent of original size
+    width = int(img.shape[1] * scale_percent)
+    height = int(img.shape[0] * scale_percent)
+    dim = (width, height)
+  
+    # resize image
+    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    return resized   

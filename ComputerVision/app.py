@@ -8,6 +8,18 @@ from core import Object, grabScreen
 from const import Constants
 
 
+def resize(img, scale = 1):
+    scale_percent = scale # percent of original size
+    width = int(img.shape[1] * scale_percent)
+    height = int(img.shape[0] * scale_percent)
+    dim = (width, height)
+  
+    # resize image
+    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    return resized
+
+# Set 1 to 100%, 2 to 200% or 3 to 300%
+scale = 2
 
 startTime = time.time()
 prevTime = time.time()
@@ -70,7 +82,7 @@ while 1:
                     break
 
 
-    cv2.imshow("Screen", img_o)
+    cv2.imshow("Screen", resize(img_o,scale))
 
     if cv2.waitKey(1) == ord('q'):
         break
