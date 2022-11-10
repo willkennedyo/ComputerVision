@@ -30,7 +30,7 @@ To found the dino and enemies on the screen, we compare a template against overl
 > 
 > Formula as stated in opencv documentation :
 >
-> ![TM_CCOEFF_NORMED](<https://github.com/willkennedyo/ComputerVision/blob/Master/TM_CCOEFF_NORMED.png?raw=true>)
+> ![TM_CCOEFF_NORMED](<https://github.com/willkennedyo/ComputerVision/blob/master/TM_CCOEFF_NORMED.png?raw=true>)
 
 ```
 See the coeff_norm_test.py file for more details
