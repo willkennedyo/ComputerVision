@@ -132,3 +132,7 @@ dmypy.json
 /ComputerVision/cat
 /ComputerVision/haarcascades
 /.vs/ComputerVision/v17/.suo
+*.sqlite
+/.vs/ComputerVision/FileContentIndex
+/.vs/ComputerVision/v17
+/.vs
